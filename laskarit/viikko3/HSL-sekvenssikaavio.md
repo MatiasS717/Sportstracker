@@ -5,19 +5,19 @@ sequenceDiagram
   participant Main
   participant laitehallinto
   Main->>laitehallinto: HKLLaitehallinto()
-  participant rautatietori
+  create participant rautatietori
   Main->>rautatietori: Lataajalaite()
-  participant ratikka6
+  create participant ratikka6
   Main->>ratikka6: Lukijalaite()
-  participant bussi244
+  create participant bussi244
   Main->>bussi244: Lukijalaite()
   Main->>laitehallinto: lisaa_lataaja(rautatietori)
   Main->>laitehallinto: lisaa_lukija(ratikka6)
   Main->>laitehallinto: lisaa_lukija(bussi244)
-  participant lippu_luukku
+  create participant lippu_luukku
   Main->>lippu_luukku: Kioski()
   Main->>lippu_luukku: osta_matkakortti("Kalle")
-  participant kallen_kortti
+  create participant kallen_kortti
   lippu_luukku->>kallen_kortti: Matkakortti("Kalle")
   kallen_kortti->>rautatietori: lataa_arvoa(3)
   rautatietori-->>kallen_kortti: kasvata_arvoa(3)
