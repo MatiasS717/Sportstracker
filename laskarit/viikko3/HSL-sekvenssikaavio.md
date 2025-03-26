@@ -3,7 +3,7 @@
 ```mermaid
 sequenceDiagram
   participant Main
-  participant laitehallinto
+  create participant laitehallinto
   Main->>laitehallinto: HKLLaitehallinto()
   create participant rautatietori
   Main->>rautatietori: Lataajalaite()
@@ -23,7 +23,7 @@ sequenceDiagram
   rautatietori->>kallen_kortti: kasvata_arvoa(3)
   Main->>ratikka6: osta_lippu(kallen_kortti, 0)
   ratikka6->>kallen_kortti: vahenna_arvoa(1.5)
-  ratikka6->>Main: True
+  ratikka6-->>Main: True
   Main->>bussi244: osta_lippu(kallen_kortti, 2)
   bussi244-->>Main: False
 ```
