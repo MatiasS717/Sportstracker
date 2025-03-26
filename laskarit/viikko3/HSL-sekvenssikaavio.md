@@ -20,7 +20,7 @@ sequenceDiagram
   Main->>lippu_luukku: osta_matkakortti("Kalle")
   lippu_luukku->>kallen_kortti: Matkakortti("Kalle")
   kallen_kortti->>rautatietori: lataa_arvoa(3)
-  rautatientori-->>kallen_kortti: kasvata_arvoa(3)
+  rautatietori-->>kallen_kortti: kasvata_arvoa(3)
   kallen_kortti->>ratikka6: osta_lippu(0)
   ratikka6-->>kallen_kortti: True, vahenna_arvoa(1.5)
   kallen_kortti->>bussi244: osta_lippu(2)
