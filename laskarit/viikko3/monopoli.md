@@ -19,7 +19,6 @@
     Kortteja "1" -- "1" Toiminto
     Ruutu "1" -- "1" Yhteismaa
     Yhteismaa "1" -- "1" Kortteja
-    Kortteja "1" -- "1" Toiminto
     Ruutu "1" -- "1" Ruutu : seuraava
     Ruutu "1" -- "0..8" Pelinappula
     Pelinappula "1" -- "1" Pelaaja
