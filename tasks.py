@@ -6,4 +6,4 @@ def foo(ctx):
 
 @task
 def start(ctx):
-    ctx.run("python3 src/UI.py", pty=True)
+    ctx.run("python3 index.py", pty=True)

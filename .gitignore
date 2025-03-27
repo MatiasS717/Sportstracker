@@ -2,3 +2,10 @@
 __pycache__
 .coverage
 htmlcov
+entities
+repositories
+services
+database_connection.py
+initialize_database.py
+poetry.lock
+pyproject.toml
