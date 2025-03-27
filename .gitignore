@@ -9,3 +9,4 @@ database_connection.py
 initialize_database.py
 poetry.lock
 pyproject.toml
+database.db
