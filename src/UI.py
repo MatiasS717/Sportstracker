@@ -23,7 +23,7 @@ class UI:
             return
         else:
             result = all_results[0]
-        if self.username_entry.get()==result[0] and self.password_entry.get()==result[1]:
+        if username==result[0] and password==result[1]:
             messagebox.showinfo(title="Login Success", message="You successfully logged in")
         else:
             messagebox.showerror(title="Error", message="Invalid login.")
