@@ -7,9 +7,23 @@ class UI:
         self._root = root
 
     def login(self):
-        username = "matias"
-        password = "12345"
-        if self.username_entry.get()==username and self.password_entry.get()==password:
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+        conn = sqlite3.connect('database.db')
+        data_get_query = '''SELECT username, password 
+                            FROM users
+                            WHERE username = ? AND
+                            password = ?'''
+        cursor = conn.cursor()
+        all_results = cursor.execute(data_get_query, [username, password]).fetchall()
+        conn.commit()
+        conn.close()
+        if all_results == []:
+            messagebox.showerror(title="Error", message="Invalid login.")
+            return
+        else:
+            result = all_results[0]
+        if self.username_entry.get()==result[0] and self.password_entry.get()==result[1]:
             messagebox.showinfo(title="Login Success", message="You successfully logged in")
         else:
             messagebox.showerror(title="Error", message="Invalid login.")
