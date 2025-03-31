@@ -1,0 +1,3 @@
+[run]
+source = src
+omit = src/tests/**, src/tests/__init__.py, src/tests/sql_commands_test.py, src/entities/**, src/repositories/**, src/services/**, src/database_connection.py, src/database.db, src/index.py, src/initialize_database.py, src/schema.sql, src/UI.py

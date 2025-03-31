@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import Tk, ttk, constants, messagebox
-import sqlite3
+import sql_commands
 
 class UI:
     def __init__(self, root):
@@ -9,20 +9,10 @@ class UI:
     def login(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
-        conn = sqlite3.connect('database.db')
-        data_get_query = '''SELECT username, password 
-                            FROM users
-                            WHERE username = ? AND
-                            password = ?'''
-        cursor = conn.cursor()
-        all_results = cursor.execute(data_get_query, [username, password]).fetchall()
-        conn.commit()
-        conn.close()
-        if all_results == []:
+        result = sql_commands.login(username, password)
+        if result == None:
             messagebox.showerror(title="Error", message="Invalid login.")
             return
-        else:
-            result = all_results[0]
         if username==result[0] and password==result[1]:
             messagebox.showinfo(title="Login Success", message="You successfully logged in")
         else:
@@ -32,18 +22,14 @@ class UI:
         if self.password.get()==self.repeat_password_entry.get():
             username = self.username.get()
             password = self.password.get()
-            conn = sqlite3.connect('database.db')
-            data_insert_query = '''INSERT INTO users (username, password)
-                                   VALUES(?, ?)'''
-            data_insert_tuple = (username, password)
-            cursor = conn.cursor()
-            cursor.execute(data_insert_query, data_insert_tuple)
-            conn.commit()
-            conn.close()
-            messagebox.showinfo(title="Register Success", message="You successfully registered")
-            self.register_window.destroy()
+            try:
+                sql_commands.register(username, password)
+                messagebox.showinfo(title="Register Success", message="You successfully registered")
+                self.register_window.destroy()
+            except sqlite3.IntegrityError:
+                messagebox.showerror(title="Error", message="Username allready taken")
         else:
-            messagebox.showerror(title="Error", message="Invalid register")
+            messagebox.showerror(title="Error", message="Passwords do not match")
 
     def register_start(self):
 

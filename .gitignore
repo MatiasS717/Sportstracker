@@ -10,4 +10,3 @@ initialize_database.py
 poetry.lock
 pyproject.toml
 database.db
-db.py

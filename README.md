@@ -13,3 +13,7 @@
 ## Vaatimusmäärittely
 
 [Vaatimusmäärittely](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+
+## Changelog
+
+
