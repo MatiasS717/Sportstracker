@@ -9,20 +9,30 @@
 
 ## Asennus
 1. Asenna riippuvuudet komennolla:
+
 `poetry install`
+
 2. Suorita vaadittavat alustustoimenpiteet komennolla:
+
 `poetry run invoke build`
+
 3. Käynnistä sovellus komennolla:
+
 `poetry run invoke start`
 
 ## Komentorivitoiminnot
 
 ### Ohjelman suorittaminen
 Ohjelman pystyy suorittamaan komennolla:
+
 `poetry run invoke start`
+
 ### Testaus
 Testit suoritetaan komennolla:
+
 `poetry run invoke test`
+
 ### Testikattavuus
 Testikattavuusraportin voi generoida komennolla:
+
 `poetry run invoke coverage-report`
