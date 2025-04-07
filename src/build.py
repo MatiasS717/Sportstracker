@@ -1,7 +1,9 @@
-import sql_commands
+import users_commands
+import activities_commands
 
 def initialize_database():
-    sql_commands.create_table()
+    users_commands.create_table_users()
+    activities_commands.create_table_activities()
 
 if __name__ == "__main__":
     initialize_database()

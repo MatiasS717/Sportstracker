@@ -8,12 +8,20 @@ def login(username, password):
     result = db.query(sql, [username, password])
     return result[0] if result else None
 
+def get_id(username, password):
+    sql = """SELECT id
+             FROM users
+             WHERE username = ? AND
+             password = ?"""
+    result = db.query(sql, [username, password])
+    return result[0] if result else None
+
 def register(username, password):
     sql = '''INSERT INTO users (username, password)
              VALUES(?, ?)'''
     db.execute(sql, [username, password])
 
-def create_table():
+def create_table_users():
     sql = """CREATE TABLE users (
              id INTEGER PRIMARY KEY,
              username TEXT UNIQUE,
