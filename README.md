@@ -6,6 +6,7 @@
 - [Työaikakirjanpito](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
 - [Vaatimusmäärittely](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 - [Changelog](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
+- [Arkkitehtuuri](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
 ## Asennus
 1. Asenna riippuvuudet komennolla:
