@@ -6,7 +6,7 @@ def get_connection():
 
 def execute(sql, params=[]):
     con = get_connection()
-    result = con.execute(sql, params)
+    con.execute(sql, params)
     con.commit()
     con.close()
 

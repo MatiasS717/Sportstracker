@@ -6,3 +6,11 @@
 - Lisätty sql_commands.py, jossa on erilaisia SQL komentoja.
 - Luotu UI.py, joka vastaa käyttöliittymästä, sekä index.py, joka vastaa ohjelman käynnistämisestä.
 - Aloitettu testaus sql_commands.py tiedoston toimivuudesta.
+
+## Viikko 4
+- Käyttäjä pääsee kirjautumisen jälkeen sovelluksen käyttösivulle.
+- Käyttäjä pääsee sivulle jossa voi lisätä uusia urheilusuorituksia.
+- Käyttäjä voi lisätä urheilusuorituksiaan tietokantaan.
+- Jaettu sqlcommands.py tiedostoihin userscommands.py ja activitiescommands.py
+- Lisätty testausta.
+- Otettu Pylint käyttöön.

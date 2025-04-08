@@ -1,7 +1,7 @@
 import db
 
 def login(username, password):
-    sql = '''SELECT username, password 
+    sql = '''SELECT username, password
              FROM users
              WHERE username = ? AND
              password = ?'''
@@ -27,3 +27,12 @@ def create_table_users():
              username TEXT UNIQUE,
              password TEXT)"""
     db.execute(sql)
+
+def get_all_users():
+    sql = "SELECT * FROM users"
+    result = db.query(sql)
+    return result
+
+def remove_user(username, password):
+    sql = "DELETE FROM users WHERE username = ? AND password = ?"
+    db.execute(sql, [username, password])

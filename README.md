@@ -36,3 +36,9 @@ Testit suoritetaan komennolla:
 Testikattavuusraportin voi generoida komennolla:
 
 `poetry run invoke coverage-report`
+
+### Koodin laatu
+Koodin laatua voi testata komennolla:
+
+`poetry run invoke lint`
+
