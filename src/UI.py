@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import Tk, ttk, constants, messagebox
+import sqlite3
 import users_commands
 import activities_commands
 
@@ -17,8 +18,13 @@ class UI:
         self.gray = "#333333"
         self.pink = "#FF3399"
         
-    def _init_view():
-        pass
+    def _init_view(self, windowname):
+        windowname = tkinter.Toplevel()
+        windowname.title("Sportstracker")
+        windowname.geometry('440x340')
+        windowname.configure(bg=self.gray)
+
+        return windowname
 
     def _show_error(self, message):
         messagebox.showerror(title="Error", message=message)
@@ -61,12 +67,9 @@ class UI:
 
     def activities_start(self):
 
-        activities_window = tkinter.Toplevel()
-        self.activities_window = activities_window
-        activities_window.title("Sportstracker")
+        activities_window = self._init_view("activities_window")
         activities_window.geometry('840x340')
-        activities_window.configure(bg=self.gray)
-
+        
         activities_frame = tkinter.LabelFrame(activities_window, text="Activities")
         activities_frame.grid(row=0, column=0, padx=20, pady=20)
 
@@ -97,31 +100,47 @@ class UI:
 
     def sportstracker_start(self):
 
-        sportstracker_window = tkinter.Toplevel()
-        self.sportstracker_window = sportstracker_window
-        sportstracker_window.title("Sportstracker")
-        sportstracker_window.geometry('440x340')
-        sportstracker_window.configure(bg=self.gray)
+        sportstracker_window = self._init_view("sportstracker_window")
 
         heading_label = tkinter.Label(sportstracker_window, text="Sportstracker", bg=self.gray, fg=self.white, font=("Arial", 20))
         user_label = tkinter.Label(sportstracker_window, text="User:", bg=self.gray, fg=self.white, font=("Arial", 16))
         username_label = tkinter.Label(sportstracker_window, text=self.session_username, bg=self.gray, fg=self.white, font=("Arial", 16))
         activities_label = tkinter.Label(sportstracker_window, text="Activities", bg=self.gray, fg=self.pink, font=("Arial", 16))
-        new_activity_button = tkinter.Button(sportstracker_window, text="New activity", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.activities_start)
+        activity_label = tkinter.Label(sportstracker_window, text="Activity", bg=self.gray, fg=self.white, font=("Arial", 16))
+        tracker_label = tkinter.Label(sportstracker_window, text="Tracker", bg=self.gray, fg=self.white, font=("Arial", 16))
+        training_type_label = tkinter.Label(sportstracker_window, text="Training type", bg=self.gray, fg=self.white, font=("Arial", 16))
 
         heading_label.grid(row=0, column=0)
         user_label.grid(row=1, column=0)
         username_label.grid(row=1, column=1)
         activities_label.grid(row=2, column=1)
-        new_activity_button.grid(row=3, column=1, pady=10)
+        activity_label.grid(row=3, column=0)
+        tracker_label.grid(row=3, column=1)
+        training_type_label.grid(row=3, column=2)
+
+        result = users_commands.get_id(self.session_username, self.session_password)
+        user_id = result[0]
+        activities = activities_commands.get_activities(user_id)
+        x = 4
+
+        for activity in activities:
+            list_activity_label = tkinter.Label(sportstracker_window, text=activity[1], bg=self.gray, fg=self.white, font=("Arial", 14))
+            list_tracker_label = tkinter.Label(sportstracker_window, text=activity[2], bg=self.gray, fg=self.white, font=("Arial", 14))
+            list_training_type_label = tkinter.Label(sportstracker_window, text=activity[3], bg=self.gray, fg=self.white, font=("Arial", 14))
+
+            list_activity_label.grid(row=x, column=0)
+            list_tracker_label.grid(row=x, column=1)
+            list_training_type_label.grid(row=x, column=2)
+
+            x += 1
+        
+        new_activity_button = tkinter.Button(sportstracker_window, text="New activity", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.activities_start)
+        new_activity_button.grid(row=x, column=1, pady=10)
 
     def register_start(self):
 
-        register_window = tkinter.Toplevel()
+        register_window = self._init_view("register_window")
         self.register_window = register_window
-        register_window.title("Sportstracker")
-        register_window.geometry('440x340')
-        register_window.configure(bg=self.gray)
 
         heading_label = tkinter.Label(register_window, text="Register", bg=self.gray, fg=self.white, font=("Arial", 30))
 
