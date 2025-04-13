@@ -19,3 +19,7 @@ def create_table_activities():
              user_id INTEGER REFERENCES users)
              """
     db.execute(sql)
+
+def drop_table_activities():
+    sql = "drop table if exists activities"
+    db.execute(sql)

@@ -21,13 +21,6 @@ def register(username, password):
              VALUES(?, ?)'''
     db.execute(sql, [username, password])
 
-def create_table_users():
-    sql = """CREATE TABLE users (
-             id INTEGER PRIMARY KEY,
-             username TEXT UNIQUE,
-             password TEXT)"""
-    db.execute(sql)
-
 def get_all_users():
     sql = "SELECT * FROM users"
     result = db.query(sql)
@@ -36,3 +29,14 @@ def get_all_users():
 def remove_user(username, password):
     sql = "DELETE FROM users WHERE username = ? AND password = ?"
     db.execute(sql, [username, password])
+
+def create_table_users():
+    sql = """CREATE TABLE users (
+             id INTEGER PRIMARY KEY,
+             username TEXT UNIQUE,
+             password TEXT)"""
+    db.execute(sql)
+
+def drop_table_users():
+    sql = "drop table if exists users"
+    db.execute(sql)
