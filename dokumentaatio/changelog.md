@@ -14,3 +14,8 @@
 - Jaettu sqlcommands.py tiedostoihin userscommands.py ja activitiescommands.py
 - Lisätty testausta.
 - Otettu Pylint käyttöön.
+
+## Viikko 5
+- Käyttäjä näkee Sportstracker sivulla omat liikuntasuorituksensa.
+- UI ei enää toimi Toplevel tyylillä, vaan käynnissä on aina vain yksi ikkuna.
+- UI refaktoroitu.

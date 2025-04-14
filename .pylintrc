@@ -10,7 +10,7 @@ fail-under=10.0
 
 # Add files or directories to the blacklist. They should be base names, not
 # paths.
-ignore=CVS,UI.py,tests
+ignore=CVS,UI.py,activities_UI.py,login_UI.py,register_UI.py,sportstracker_UI.py,tests
 
 # Add files or directories matching the regex patterns to the blacklist. The
 # regex matches against base names, not paths.
