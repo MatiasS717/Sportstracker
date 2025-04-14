@@ -1,10 +1,7 @@
-import tkinter
-from tkinter import Tk, ttk, constants, messagebox
-import sqlite3
-import users_commands
-import activities_commands
+from login_UI import Login
 from register_UI import Register
 from sportstracker_UI import Sportstracker
+from activities_UI import Activities
 
 # ui
 # - view
@@ -16,75 +13,47 @@ from sportstracker_UI import Sportstracker
 class UI:
     def __init__(self, root):
         self._root = root
-        self.white = "#FFFFFF"
-        self.gray = "#333333"
-        self.pink = "#FF3399"
-        self._state = {}
-        self.register = Register(self._state)
-        self.sportstracker = Sportstracker(self._state)
-        
-        
-    def _init_view(self, windowname):
-        windowname = tkinter.Toplevel()
-        windowname.title("Sportstracker") 
-        windowname.geometry('440x340')
-        windowname.configure(bg=self.gray)
-
-        return windowname
-
-    def _show_error(self, message):
-        messagebox.showerror(title="Error", message=message)
-
-    def login(self):
-        session_username = self.login_username_entry.get()
-        session_password = self.login_password_entry.get()
-        self._state["session_username"] = session_username
-        self._state["session_password"] = session_password
-
-        result = users_commands.login(session_username, session_password)
-        if result == None:
-            self._show_error("Invalid login.")
-            return
-        if session_username==result[0] and session_password==result[1]:
-            messagebox.showinfo(title="Login Success", message="You successfully logged in")
-            self.sportstracker_start()
-        else:
-            self._show_error("Invalid login.")
-
-    def sportstracker_start(self):
-
-        self.sportstracker.sportstracker_start()
-
-    def register_start(self):
-
-        self.register.register_start()
+        self._current_view = None
 
     def start(self):
+        self._show_login_view()
 
-        frame = tkinter.Frame(bg=self.gray)
+    def _hide_current_view(self):
+        if self._current_view:
+            self._current_view.destroy()
 
-        heading_label = tkinter.Label(frame, text="Login", bg=self.gray, fg=self.white, font=("Arial", 30))
+        self._current_view = None
 
-        username_label = tkinter.Label(frame, text="Username", bg=self.gray, fg=self.white, font=("Arial", 16))
-        username_entry = ttk.Entry(frame, font=("Arial", 16))
-        self.login_username_entry = username_entry
+    def _show_login_view(self):
+        self._hide_current_view()
 
-        password_label = tkinter.Label(frame, text="Password", bg=self.gray, fg=self.white, font=("Arial", 16))
-        password_entry = ttk.Entry(frame, show="*", font=("Arial", 16))
-        self.login_password_entry = password_entry
+        self._current_view = Login(
+            self._root,
+            self._show_sportstracker_view,
+            self._show_register_view
+        )
+        self._current_view.pack()
 
-        login_button = tkinter.Button(frame, text="Log in", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.login)
-        register_button = tkinter.Button(frame, text="Register", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.register_start)
+    def _show_sportstracker_view(self, state):
+        self._hide_current_view()
 
-        heading_label.grid(row=0, column=0, columnspan=2, pady=40)
+        self._current_view = Sportstracker(self._root, self._show_activities_view, state)
 
-        username_label.grid(row=1, column=0)
-        username_entry.grid(row=1, column=1, pady=10)
+        self._current_view.pack()
 
-        password_label.grid(row=2, column=0)
-        password_entry.grid(row=2, column=1, pady=10)
+    def _show_register_view(self):
+        self._hide_current_view()
 
-        login_button.grid(row=3, column=0, columnspan=2, pady=10)
-        register_button.grid(row=4, column=0, columnspan=2, pady=10)
+        self._current_view = Register(
+            self._root,
+            self._show_login_view
+        )
+        self._current_view.pack()
+    
+    def _show_activities_view(self, state):
+        self._hide_current_view()
 
-        frame.pack()
+        self._current_view = Activities(self._root, self._show_sportstracker_view, state)
+
+        self._current_view.pack()
+

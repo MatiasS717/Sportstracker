@@ -4,19 +4,22 @@ import users_commands
 import activities_commands
 
 class Activities:
-    def __init__(self, state):
+    def __init__(self, root, sportstracker, state):
+        self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
         self.pink = "#FF3399"
         self._state = state
-        
-    def _init_view(self, windowname):
-        windowname = tkinter.Toplevel()
-        windowname.title("Sportstracker")
-        windowname.geometry('440x340')
-        windowname.configure(bg=self.gray)
+        self._frame = None
+        self.sportstracker = sportstracker
 
-        return windowname
+        self.activities_start()
+
+    def pack(self):
+        self._frame.pack()
+
+    def destroy(self):
+        self._frame.destroy()
 
     def add_activity(self):
         result = users_commands.get_id(self._state["session_username"], self._state["session_password"])
@@ -27,13 +30,14 @@ class Activities:
         activities_commands.add_activity(activity, tracker, training_type, user_id)
         messagebox.showinfo(title="Activity added", message="You successfully added an activity")
 
+    def return_command(self):
+        self.sportstracker(self._state)
 
     def activities_start(self):
 
-        activities_window = self._init_view("activities_window")
-        activities_window.geometry('840x340')
+        self._frame = tkinter.Frame(bg=self.gray)
         
-        activities_frame = tkinter.LabelFrame(activities_window, text="Activities")
+        activities_frame = tkinter.LabelFrame(self._frame, text="Activities")
         activities_frame.grid(row=0, column=0, padx=20, pady=20)
 
         activity_label = tkinter.Label(activities_frame, text="Activity", font=("Arial", 16))
@@ -48,7 +52,8 @@ class Activities:
         training_type_combobox = ttk.Combobox(activities_frame, values=["", "Endurance", "Strength", "Mobility", "Fitness"])
         self.training_type_entry = training_type_combobox
 
-        add_activity_button = tkinter.Button(activities_window, text="Add activity", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.add_activity)
+        add_activity_button = tkinter.Button(self._frame, text="Add activity", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.add_activity)
+        return_button = tkinter.Button(self._frame, text="Return to sportstracker", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.return_command)
 
         activity_label.grid(row=0, column=0)
         activity_entry.grid(row=1, column=0, padx=10)
@@ -60,3 +65,4 @@ class Activities:
         training_type_combobox.grid(row=1, column=2, padx=10)
 
         add_activity_button.grid(row=2, column=0, pady=10)
+        return_button.grid(row=3, column=0, pady=10)
