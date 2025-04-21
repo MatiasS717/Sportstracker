@@ -4,14 +4,15 @@ import users_commands
 import activities_commands
 
 class Sportstracker:
-    def __init__(self, root, activities, state):
+    def __init__(self, root, new_activities, edit_activities, state):
         self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
         self.pink = "#FF3399"
         self._state = state
         self._frame = None
-        self.activities = activities
+        self.new_activities = new_activities
+        self.edit_activities =edit_activities
 
         self.sportstracker_start()
 
@@ -21,8 +22,11 @@ class Sportstracker:
     def destroy(self):
         self._frame.destroy()
 
-    def activities_start(self):
-        self.activities(self._state)
+    def new_activities_start(self):
+        self.new_activities(self._state)
+    
+    def edit_activities_start(self):
+        self.edit_activities(self._state)
 
     def sportstracker_start(self):
 
@@ -61,5 +65,9 @@ class Sportstracker:
 
             x += 1
         
-        new_activity_button = tkinter.Button(self._frame, text="New activity", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.activities_start)
+        new_activity_button = tkinter.Button(self._frame, text="New activity", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.new_activities_start)
         new_activity_button.grid(row=x, column=1, pady=10)
+
+        edit_activities_button = tkinter.Button(self._frame, text="Edit activities", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.edit_activities_start)
+        edit_activities_button.grid(row=(x+1), column=1, pady=10)
+        

@@ -10,6 +10,14 @@ def get_activities(user_id):
     result = db.query(sql, [user_id])
     return result
 
+def delete_activity(activity, tracker, training_type, user_id):
+    sql = """DELETE FROM activities WHERE 
+             activity = ? AND
+             tracker = ? AND
+             training_type = ? AND
+             user_id = ?"""
+    db.execute(sql, [activity, tracker, training_type, user_id])
+
 def create_table_activities():
     sql = """CREATE TABLE activities (
              id INTEGER PRIMARY KEY,

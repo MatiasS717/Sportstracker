@@ -3,7 +3,7 @@ from tkinter import Tk, ttk, constants, messagebox
 import users_commands
 import activities_commands
 
-class Activities:
+class New_activities:
     def __init__(self, root, sportstracker, state):
         self._root = root
         self.white = "#FFFFFF"
@@ -13,7 +13,10 @@ class Activities:
         self._frame = None
         self.sportstracker = sportstracker
 
-        self.activities_start()
+        self.new_activities_start()
+
+    def _show_error(self, message):
+        messagebox.showerror(title="Error", message=message)
 
     def pack(self):
         self._frame.pack()
@@ -27,13 +30,21 @@ class Activities:
         activity = self.activity_entry.get()
         tracker = self.tracker_entry.get()
         training_type = self.training_type_entry.get()
-        activities_commands.add_activity(activity, tracker, training_type, user_id)
-        messagebox.showinfo(title="Activity added", message="You successfully added an activity")
+        activities = activities_commands.get_activities(user_id)
+        y = 0
+        for a in activities:
+            if activity in a:
+                y = 1
+        if y == 0:
+            activities_commands.add_activity(activity, tracker, training_type, user_id)
+            messagebox.showinfo(title="Activity added", message="You successfully added an activity")
+        else:
+            self._show_error("Activity allready exists.")
 
     def return_command(self):
         self.sportstracker(self._state)
 
-    def activities_start(self):
+    def new_activities_start(self):
 
         self._frame = tkinter.Frame(bg=self.gray)
         
