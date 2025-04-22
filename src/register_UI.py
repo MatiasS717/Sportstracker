@@ -4,7 +4,23 @@ import sqlite3
 import users_commands
 
 class Register:
+    """Rekisteröitymiseen tarkoitettu näkymä."""
+
     def __init__(self, root, login):
+        """Luokan konstruktori. Luo uuden liikuntasuoritukset-näkymän.
+
+            Args:
+                root:
+                    TKinter-elementti, jonka sisään näkymä alustetaan.
+                white, gray, pink:
+                    TKinter värejä.
+                frame:
+                    Näkymän kehys.
+                login:
+                    Sisäänkirjautumisen näkymä.
+        """
+
+        self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
         self.pink = "#FF3399"
@@ -14,15 +30,23 @@ class Register:
         self.register_start()
 
     def pack(self):
+        """Näyttää näkymän."""
+
         self._frame.pack()
 
     def destroy(self):
+        """Tuhoaa näkymän."""
+
         self._frame.destroy()
 
     def _show_error(self, message):
+        """Virheviestien näyttäminen."""
+
         messagebox.showerror(title="Error", message=message)
 
     def register_command(self):
+        """Luo uuden käyttäjän tietokantaan."""
+
         if self.register_password_entry.get()==self.register_repeat_password_entry.get():
             username = self.register_username_entry.get()
             password = self.register_password_entry.get()
@@ -36,6 +60,7 @@ class Register:
             self._show_error("Passwords do not match")
 
     def register_start(self):
+        """Rakentaa näkymän."""
 
         self._frame = tkinter.Frame(bg=self.gray)
 

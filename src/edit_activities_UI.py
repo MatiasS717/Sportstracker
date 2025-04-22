@@ -4,7 +4,24 @@ import users_commands
 import activities_commands
 
 class Edit_activities:
+    """Käyttäjän liikuntasuorituksien muokkaamiseen tarkoitettu näkymä."""
+
     def __init__(self, root, sportstracker, state):
+        """Luokan konstruktori. Luo uuden muokkaamisnäkymän.
+
+            Args:
+                root:
+                    TKinter-elementti, jonka sisään näkymä alustetaan.
+                white, gray, pink:
+                    TKinter värejä.
+                state:
+                    Näkymästä toiseen siirtyvät kirjautumistiedot.
+                frame:
+                    Näkymän kehys.
+                sportstracker:
+                    Liikuntasuoritukset näyttävän näkymän funktio.
+        """
+
         self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
@@ -16,18 +33,28 @@ class Edit_activities:
         self.edit_activities_start()
     
     def _show_error(self, message):
+        """Virheviestien näyttäminen."""
+
         messagebox.showerror(title="Error", message=message)
 
     def pack(self):
+        """Näyttää näkymän."""
+
         self._frame.pack()
 
     def destroy(self):
+        """Tuhoaa näkymän."""
+
         self._frame.destroy()
 
     def return_command(self):
+        """Vie käyttäjän takaisin liikuntasuoritukset-näkymään."""
+
         self.sportstracker(self._state)
     
     def delete_activity(self, activity, tracker, training_type):
+        """Poistaa liikuntasuorituksen tietokannasta ja päivittää näkymän."""
+
         result = users_commands.get_id(self._state["session_username"], self._state["session_password"])
         user_id = result[0]
         activities = activities_commands.get_activities(user_id)
@@ -45,6 +72,8 @@ class Edit_activities:
             self._show_error("Activity allready deleted.")
 
     def initialize_activity_item(self, activity):
+        """Alustaa yksittäisen liikuntasuorituksen näkymään."""
+
         item_frame = tkinter.Frame(master=self._frame, bg=self.gray)
         list_activity_label = tkinter.Label(master=item_frame, text=activity[1], bg=self.gray, fg=self.white, font=("Arial", 14))
         list_tracker_label = tkinter.Label(master=item_frame, text=activity[2], bg=self.gray, fg=self.white, font=("Arial", 14))
@@ -59,6 +88,8 @@ class Edit_activities:
         item_frame.pack()
 
     def initialize_activity_list(self):
+        """Alustaa listan liikuntasuorituksista näkymään."""
+
         result = users_commands.get_id(self._state["session_username"], self._state["session_password"])
         user_id = result[0]
         activities = activities_commands.get_activities(user_id)
@@ -67,6 +98,8 @@ class Edit_activities:
             self.initialize_activity_item(activity)
     
     def initialize_return_button(self):
+        """Alustaa painikkeen."""
+
         button_frame = tkinter.Frame(master=self._frame, bg=self.gray)
         return_button = tkinter.Button(master=button_frame, text="Return to sportstracker", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.return_command)
         return_button.grid(row=0, column=1, pady=10)
@@ -74,6 +107,7 @@ class Edit_activities:
         button_frame.pack()
 
     def edit_activities_start(self):
+        """Rakentaa näkymän."""
 
         self._frame = tkinter.Frame(bg=self.gray)
         

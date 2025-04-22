@@ -4,7 +4,24 @@ import users_commands
 import activities_commands
 
 class New_activities:
+    """Käyttäjän uusien liikuntasuoritusten lisäämiseen tarkoitettu näkymä."""
+
     def __init__(self, root, sportstracker, state):
+        """Luokan konstruktori. Luo uuden lisäämisnäkymän.
+
+            Args:
+                root:
+                    TKinter-elementti, jonka sisään näkymä alustetaan.
+                white, gray, pink:
+                    TKinter värejä.
+                state:
+                    Näkymästä toiseen siirtyvät kirjautumistiedot.
+                frame:
+                    Näkymän kehys.
+                sportstracker:
+                    Liikuntasuoritukset näyttävän näkymän funktio.
+        """
+
         self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
@@ -16,15 +33,23 @@ class New_activities:
         self.new_activities_start()
 
     def _show_error(self, message):
+        """Virheviestien näyttäminen."""
+
         messagebox.showerror(title="Error", message=message)
 
     def pack(self):
+        """Näyttää näkymän."""
+
         self._frame.pack()
 
     def destroy(self):
+        """Tuhoaa näkymän."""
+
         self._frame.destroy()
 
     def add_activity(self):
+        """Lisää uuden liikuntasuorituksen tietokantaan"""
+
         result = users_commands.get_id(self._state["session_username"], self._state["session_password"])
         user_id = result[0]
         activity = self.activity_entry.get()
@@ -42,9 +67,12 @@ class New_activities:
             self._show_error("Activity allready exists.")
 
     def return_command(self):
+        """Vie käyttäjän takaisin liikuntasuoritukset-näkymään."""
+
         self.sportstracker(self._state)
 
     def new_activities_start(self):
+        """Rakentaa näkymän."""
 
         self._frame = tkinter.Frame(bg=self.gray)
         

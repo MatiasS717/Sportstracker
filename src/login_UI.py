@@ -4,7 +4,26 @@ import sqlite3
 import users_commands
 
 class Login:
+    """Sisäänkirjautumiseen tarkoitettu näkymä."""
+
     def __init__(self, root, sportstracker, register):
+        """Luokan konstruktori. Luo uuden liikuntasuoritukset-näkymän.
+
+            Args:
+                root:
+                    TKinter-elementti, jonka sisään näkymä alustetaan.
+                white, gray, pink:
+                    TKinter värejä.
+                state:
+                    Näkymästä toiseen siirtyvät kirjautumistiedot.
+                frame:
+                    Näkymän kehys.
+                sportstracker:
+                    Liikuntasuoritukset näyttävä näkymä.
+                register:
+                    Rekisteröitymisnäkymä.
+        """
+
         self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
@@ -17,15 +36,23 @@ class Login:
         self.login_start()
         
     def _show_error(self, message):
+        """Virheviestien näyttäminen."""
+
         messagebox.showerror(title="Error", message=message)
 
     def pack(self):
+        """Näyttää näkymän."""
+
         self._frame.pack()
 
     def destroy(self):
+        """Tuhoaa näkymän."""
+
         self._frame.destroy()
 
     def login_command(self):
+        """Hoitaa sisäänkirjautumisen."""
+
         session_username = self.login_username_entry.get()
         session_password = self.login_password_entry.get()
         self._state["session_username"] = session_username
@@ -43,6 +70,7 @@ class Login:
 
 
     def login_start(self):
+        """Rakentaa näkymän."""
 
         self._frame = tkinter.Frame(bg=self.gray)
 

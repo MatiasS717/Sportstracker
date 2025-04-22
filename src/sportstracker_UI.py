@@ -4,7 +4,26 @@ import users_commands
 import activities_commands
 
 class Sportstracker:
+    """Käyttäjän liikuntasuorituksien näkemiseen tarkoitettu näkymä."""
+
     def __init__(self, root, new_activities, edit_activities, state):
+        """Luokan konstruktori. Luo uuden liikuntasuoritukset-näkymän.
+
+            Args:
+                root:
+                    TKinter-elementti, jonka sisään näkymä alustetaan.
+                white, gray, pink:
+                    TKinter värejä.
+                state:
+                    Näkymästä toiseen siirtyvät kirjautumistiedot.
+                frame:
+                    Näkymän kehys.
+                new_activities:
+                    Uusien liikuntasuoritusten lisäämiseen tarkoitettu näkymä.
+                edit_activities:
+                    Liikuntasuoritusten muokkaamiseen tarkoitettu näkymä.
+        """
+
         self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
@@ -17,18 +36,27 @@ class Sportstracker:
         self.sportstracker_start()
 
     def pack(self):
+        """Näyttää näkymän."""
+
         self._frame.pack()
 
     def destroy(self):
+        """Tuhoaa näkymän."""
+
         self._frame.destroy()
 
     def new_activities_start(self):
+        """Käynnistää uusien liikuntasuoritusten lisäämiseen tarkoitetun näkymän."""
+
         self.new_activities(self._state)
     
     def edit_activities_start(self):
+        """Käynnistää liikuntasuoritusten muokkaamiseen tarkoitetun näkymän."""
+
         self.edit_activities(self._state)
 
     def sportstracker_start(self):
+        """Rakentaa näkymän."""
 
         self._frame = tkinter.Frame(bg=self.gray)
 
