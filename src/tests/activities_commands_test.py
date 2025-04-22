@@ -14,3 +14,8 @@ class TestIndex(unittest.TestCase):
     def test_get_activities(self):
         result = activities_commands.get_activities(self.user_id)
         self.assertEqual((self.id, self.activity, self.tracker, self.training_type, self.user_id), result[0])
+    
+    def test_delete_activity(self):
+        activities_commands.delete_activity(self.activity, self.tracker, self.training_type, self.user_id)
+        result = activities_commands.get_activities(self.user_id)
+        self.assertEqual(result, [])
