@@ -1,8 +1,8 @@
 # Arkkitehtuurikuvaus
 
-## Rakenne
+## Ohjelman rakenne
 
-Ohjelman rakenne noudattaa kolmitasoista kerrosarkkitehtuuria.
+Ohjelman rakenne jakautuu kolmeen osaan.
 
 - UI
 - Backend
@@ -24,7 +24,7 @@ Jokainen käyttöliittymän osa on omassa tiedostossaan ja muodostaa oman luokka
 
 ## Sovelluslogiikka
 
-Sovelluksen loogisen tietomallin muodostavat tietokannan taulujen entiteetit User ja Activity, jotka kuvaavat käyttäjiä ja käyttäjien liikuntasuorituksia.
+Sovelluksen käyttö muodostuu tietokannan taulujen entiteettien User ja Activity ympärille, jotka kuvaavat käyttäjiä ja käyttäjien liikuntasuorituksia.
 
 ```mermaid
  classDiagram
@@ -41,7 +41,7 @@ Sovelluksen loogisen tietomallin muodostavat tietokannan taulujen entiteetit Use
       }
 ```
 
-Toiminnallisista kokonaisuuksista vastaa Backend, joka jakautuu komentojen osalta users-commands ja activities-commands tiedostoihin.
+Toiminnallisuudesta vastaa Backend, joka jakautuu komentojen osalta users-commands ja activities-commands tiedostoihin.
 
 users-commands tiedoston käskyjä ovat esimerkiksi:
 
@@ -55,15 +55,15 @@ activities-commands tiedoston käskyjä ovat esimerkiksi:
 
 `delete-activity(activity, tracker, training-type, user-id)`
 
-## Tietojen pysyväistallennus
+## Tietojen tallennus tietokantaan
 
 Backend hoitaa tietojen tallennuksen SQLite-tietokantaan luomalla tietokannan ja taulut tietokantaan build.py tiedostossa. db.py hoitaa yhteyden luonnin tietokantaan ja activities-commands, sekä users-commands tiedostot toteuttavat SQL-komennot. Käyttäjät tallennetaan database.db tiedoston tauluun `users` ja liikuntasuoritukset tauluun `activities`.
 
-## Päätoiminnallisuudet
+## Päätoiminnot
 
 ### Sisäänkirjautuminen
 
-Kun kirjautumisnäkymän syötekenttiin kirjoitetaan käyttäjätunnus ja salasana, minkä jälkeen klikataan painiketta Login, etenee sovelluksen kontrolli seuraavasti:
+Alla oleva kaavio kuvastaa sisäänkirjautumisen prosessia.
 
 ```mermaid
 sequenceDiagram
@@ -79,11 +79,11 @@ sequenceDiagram
   UI->UI: _show_sportstracker_view()
 ```
 
-Painikkeen painamiseen reagoiva tapahtumankäsittelijä kutsuu sovelluslogiikan users_commands funktiota login antaen parametriksi käyttäjätunnuksen ja salasanan. Sovelluslogiikka selvittää tietokannasta onko käyttäjätunnus olemassa ja täsmääkö salasanat. Jos nämä asiat onnistuvat, kirjautuminen onnistuu. Tämän seurauksena käyttöliittymä vaihtaa näkymäksi Sportstracker, eli sovelluksen varsinaisen päänäkymän ja näyttää käyttäjälle hänen liikuntasuorituksensa. 
+Painikkeen painamiseen reagoiva käyttöliittymän metodi kutsuu sovelluslogiikan users_commands funktiota login antaen parametriksi käyttäjätunnuksen ja salasanan. Sovelluslogiikka selvittää tietokannasta onko käyttäjätunnus olemassa ja täsmääkö salasanat. Jos nämä asiat onnistuvat, kirjautuminen onnistuu. Tämän seurauksena käyttöliittymä vaihtaa näkymäksi Sportstracker näkymän ja näyttää käyttäjälle hänen liikuntasuorituksensa. 
 
 ### Uuden käyttäjän luominen
 
-Kun uuden käyttäjän luomisnäkymässä on syötetty käyttäjätunnus, joka ei ole jo käytössä, sekä salasanat, jotka täsmäävät keskenään, minkä jälkeen klikataan "Register" etenee sovelluksen kontrolli seuraavasti:
+Alla oleva kaavio kuvastaa uuden käyttäjän luomisen prosessia:
 
 ```mermaid
 sequenceDiagram
@@ -99,11 +99,11 @@ sequenceDiagram
   UI->UI: _show_login_view()
 ```
 
-Tapahtumakäsittelijä kutsuu users_commands tiedoston funktiota register antaen parametreiksi käyttäjätunnuksen ja salasanan. Sovelluslogiikka selvittää onko käyttäjätunnus jo olemassa tietokannassa. Jos käyttäjää ei löydy, luodaan tietokantaan uusi käyttäjä. Tämän jälkeen käyttöliittymä vaihtaa näkymäksi Login, josta uudella käyttäjällä voidaan kirjautua sisään. 
+Käyttöliittymän metodi kutsuu users_commands tiedoston funktiota register antaen parametreiksi käyttäjätunnuksen ja salasanan. Sovelluslogiikka selvittää onko käyttäjätunnus jo olemassa tietokannassa. Jos käyttäjää ei löydy, luodaan tietokantaan uusi käyttäjä. Tämän jälkeen käyttöliittymä vaihtaa näkymäksi Login, josta uudella käyttäjällä voidaan kirjautua sisään. 
 
 ### Liikuntasuorituksen luominen
 
-Uuden liikuntasuorituksen luovan "Add activity"-painikkeen klikkaamisen jälkeen sovelluksen kontrolli etenee seuraavasti:
+Alla oleva kaavio kuvastaa uuden liikuntasuorituksen luomisen prosessia:
 
 ```mermaid
 sequenceDiagram
@@ -119,11 +119,11 @@ sequenceDiagram
   UI->UI: message:"You successfully added an activity"
 ```
 
-Tapahtumakäsittelijä kutsuu activities-commands tiedoston funktiota get-activities, minkä jälkeen tarkastetaan onko kyseisellä käyttäjällä olemassa jo kyseinen liikuntasuoritus. Jos ei ole, kutsutaan funktiota add_activity, mikä lisää liikuntasuorituksen tietokantaan. Lopuksi käyttöliittymä kertoo viestillä onnistuneesti lisätystä liikuntasuorituksesta.
+Käyttöliittymän metodi kutsuu activities-commands tiedoston funktiota get-activities, minkä jälkeen tarkastetaan onko kyseisellä käyttäjällä olemassa jo kyseinen liikuntasuoritus. Jos ei ole, kutsutaan funktiota add_activity, mikä lisää liikuntasuorituksen tietokantaan. Lopuksi käyttöliittymä kertoo viestillä onnistuneesti lisätystä liikuntasuorituksesta.
 
 ### Liikuntasuorituksen poistaminen
 
-Liikuntasuorituksen poistavan "Delete" painikkeen klikkaamisen jälkeen sovelluksen kontrolli etenee seuraavasti:
+Alla oleva kaavio kuvastaa liikuntasuorituksen poistamisen prosessia:
 
 ```mermaid
 sequenceDiagram
@@ -137,4 +137,4 @@ sequenceDiagram
   UI->UI: destroy(),edit_activities_start(),pack()
 ```
 
-Tapahtumakäsittelijä kutsuu activities-commands tiedoston funktiota delete_activity antaen parametriksi poistettavan liikuntasuorituksen tiedot. Komento poistaa liikuntasuorituksen tietokannasta. Tämän jälkeen UI käynnistää näkymän uudestaan, jotta sivun lista liikuntasuorituksista päivittyy.
+Käyttöliittymän metodi kutsuu activities-commands tiedoston funktiota delete_activity antaen parametriksi poistettavan liikuntasuorituksen tiedot. Komento poistaa liikuntasuorituksen tietokannasta. Tämän jälkeen UI käynnistää näkymän uudestaan, jotta sivun lista liikuntasuorituksista päivittyy.

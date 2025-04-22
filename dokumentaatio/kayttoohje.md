@@ -1,61 +1,61 @@
 # Käyttöohje
 
-Lataa projektin viimeisimmän [releasen](https://github.com/MatiasS717/ot-harjoitustyo/releases/tag/Viikko6) lähdekoodi valitsemalla *Assets*-osion alta *Source code*.
+Lataa projektin viimeisin [release](https://github.com/MatiasS717/ot-harjoitustyo/releases/tag/Viikko6).
 
 ## Ohjelman käynnistäminen
 
-Ennen ohjelman käynnistämistä, asenna riippuvuudet komennolla:
+Asenna riippuvuudet komennolla:
 
 `poetry install`
 
-Tämän jälkeen suorita alustustoimenpiteet komennolla:
+Suorita alustustoimenpiteet komennolla:
 
 `poetry run invoke build`
 
-Nyt ohjelman voi käynnistää komennolla:
+Käynnistä ohjelma komennolla:
 
 `poetry run invoke start`
 
 ## Sisään kirjautuminen
 
-Sovellus käynnistyy sisäänkirjautumisnäkymään:
+Sovelluksen käynnistäessä siirrytään automaattisesti sisäänkirjautumisnäkymään.
 
 ![](Kuvat/Login.png)
 
-Kirjautuminen onnistuu kirjoittamalla olemassa oleva käyttäjätunnus ja salasana niiden syötekenttiin ja painamalla "Login"-painiketta.
+Kirjoita syötekenttiin käyttäjätunnus ja salasana. Paina "Login"-nappia.
 
-## Uuden käyttäjän luominen
+Siirtyäksesi uuden käyttäjän luomis -näkymään, paina "Register"-nappia.
 
-Kirjautumisnäkymästä on mahdollista siirtyä uuden käyttäjän luomisnäkymään painikkeella "Register".
+## Uuden käyttäjän luominen (rekisteröinti)
 
-Uusi käyttäjä luodaan syöttämällä tiedot syötekenttiin ja painamalla "Register"-painiketta:
+Täytä syötekentät ja paina "Register"-nappia.
 
 ![](Kuvat/Register.png)
 
-Jos käyttäjän luominen onnistuu, siirrytään takaisin sisään kirjautumis -näkymään.
+Onnistuneen käyttäjän luonnin jälkeen siirryt takaisin sisään kirjautumis -näkymään.
 
 ## Liikuntasuoritusten tarkastelu
 
-Kirjauduttua sisään pääset Sportstracker näkymään, jossa näkyy liikuntasuorituksesi.
+Kirjauduttuasi sisään pääset Sportstracker näkymään, jossa näkyy liikuntasuorituksesi.
 
-Tästä näkymästä pääset luomaan uusia liikuntasuorituksia painamalla "New activity"-painiketta.
+Tästä näkymästä pääset luomaan uusia liikuntasuorituksia painamalla "New activity"-nappia.
 
-Olemassa olevia liikuntasuorituksia pääset muokkaamaan painamalla "Edit activities"-painiketta.
+Olemassa olevia liikuntasuorituksia pääset muokkaamaan painamalla "Edit activities"-nappia.
 
 ![](Kuvat/Sportstracker.png)
 
 ## Uuden liikuntasuorituksen luonti
 
-Siirryttyäsi NewActivities näkymään Sportstracker näkymästä painamalla "New activity"-painiketta, pysty luomaan uusia liikuntasuorituksia täyttämällä annetut syötekentät haluamillasi tiedoilla ja painamalla sen jälkeen "Add activity"-painiketta.
+Siirryttyäsi NewActivities näkymään Sportstracker näkymästä painamalla "New activity"-nappia, pystyt luomaan uusia liikuntasuorituksia täyttämällä annetut syötekentät haluamillasi tiedoilla ja painamalla sen jälkeen "Add activity"-nappia.
 
 ![](Kuvat/NewActivities.png)
 
-Pääset takaisin tarkastelemaan liikuntasuorituksiasi painamalla "Return to sportstracker"-painiketta.
+Pääset takaisin tarkastelemaan liikuntasuorituksiasi painamalla "Return to sportstracker"-nappia.
 
 ## Liikuntasuorituksen poistaminen
 
-Siirryttyäsi EditActivities näkymään Sportstracker näkymästä painamalla "Edit activities"-painiketta, pysty poistamaan liikuntasuorituksia painamalla kyseisen suorituksen kohdalta "Delete"-painiketta.
+Siirryttyäsi EditActivities näkymään Sportstracker näkymästä painamalla "Edit activities"-nappia, pysty poistamaan liikuntasuorituksia painamalla kyseisen suorituksen kohdalta "Delete"-nappia.
 
 ![](Kuvat/EditActivities.png)
 
-Pääset takaisin Sportstracker näkymään painamalla "Return to sportstracker"-painiketta.
+Pääset takaisin Sportstracker näkymään painamalla "Return to sportstracker"-nappia.
