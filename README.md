@@ -15,32 +15,32 @@
 - [Käyttöohje](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
 
 ## Asennus
-1. Asenna riippuvuudet komennolla:
+1. Pystyt asentamaan riippuvuudet komennolla:
 
 `poetry install`
 
-2. Suorita vaadittavat alustustoimenpiteet komennolla:
+2. Suorita alustustoimenpiteet komennolla:
 
 `poetry run invoke build`
 
-3. Käynnistä sovellus komennolla:
+3. Sovelluksen käynnistys komennolla:
 
 `poetry run invoke start`
 
 ## Komentorivitoiminnot
 
-### Ohjelman suorittaminen
-Ohjelman pystyy suorittamaan komennolla:
+### Ohjelman käynnistäminen
+Ohjelman pystyy käynnistämään komennolla:
 
 `poetry run invoke start`
 
 ### Testaus
-Testit suoritetaan komennolla:
+Testit voit suorittaa komennolla:
 
 `poetry run invoke test`
 
 ### Testikattavuus
-Testikattavuusraportin voi generoida komennolla:
+Testikattavuusraportin saa komennolla:
 
 `poetry run invoke coverage-report`
 
@@ -48,4 +48,3 @@ Testikattavuusraportin voi generoida komennolla:
 Koodin laatua voi testata komennolla:
 
 `poetry run invoke lint`
-
