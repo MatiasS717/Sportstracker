@@ -19,3 +19,12 @@
 - Käyttäjä näkee Sportstracker sivulla omat liikuntasuorituksensa.
 - UI ei enää toimi Toplevel tyylillä, vaan käynnissä on aina vain yksi ikkuna.
 - UI refaktoroitu.
+
+## Viikko 6
+
+- Käyttäjä pääsee EditActivities näkymään, missä hän voi poistaa omia liikuntasuorituksiaan.
+- Aloitettu koodin docstring-dokumentointi.
+- Laadittu alustava arkkitehtuurikuvaus.
+- Laadittu alustava käyttöohje.
+- Lisätty testausta.
+- Korjattu koodia Pylintin ohjeiden mukaisesti.

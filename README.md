@@ -11,6 +11,7 @@
 - [Vaatimusmäärittely](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 - [Changelog](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 - [Arkkitehtuuri](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+- [Käyttöohje](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
 
 ## Asennus
 1. Asenna riippuvuudet komennolla:
