@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin viimeisimmän releasen lähdekoodi valitsemalla *Assets*-osion alta *Source code*.
+Lataa projektin viimeisimmän [releasen](https://github.com/MatiasS717/ot-harjoitustyo/releases/tag/Viikko6) lähdekoodi valitsemalla *Assets*-osion alta *Source code*.
 
 ## Ohjelman käynnistäminen
 

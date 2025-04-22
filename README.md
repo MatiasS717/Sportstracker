@@ -5,6 +5,7 @@
 ## Releases
 
 - [Viikko5](https://github.com/MatiasS717/ot-harjoitustyo/releases/tag/Viikko5)
+- [Viikko6](https://github.com/MatiasS717/ot-harjoitustyo/releases/tag/Viikko6)
 
 ## Dokumentaatio
 - [Työaikakirjanpito](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
