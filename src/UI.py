@@ -1,8 +1,8 @@
 from login_UI import Login
 from register_UI import Register
 from sportstracker_UI import Sportstracker
-from new_activities_UI import New_activities
-from edit_activities_UI import Edit_activities
+from new_activities_ui import NewActivities
+from edit_activities_ui import EditActivities
 
 # ui
 # - view
@@ -15,15 +15,12 @@ class UI:
     """Sovelluksen käyttöliittymästä vastaava luokka."""
 
     def __init__(self, root):
-         """Luokan konstruktori. Luo uuden käyttöliittymästä vastaavan luokan.
-
+        """Luokan konstruktori. Luo uuden käyttöliittymästä vastaavan luokan.
         Args:
             root:
                 TKinter-elementti, jonka sisään käyttöliittymä alustetaan.
             current_view:
-                Nykyinen näkymä.
-        """
-
+                Nykyinen näkymä."""
         self._root = root
         self._current_view = None
 
@@ -33,7 +30,7 @@ class UI:
         self._show_login_view()
 
     def _hide_current_view(self):
-        """Piilottaa nykyisen näkymän"""
+        """Piilottaa nykyisen näkymän."""
 
         if self._current_view:
             self._current_view.destroy()
@@ -41,7 +38,7 @@ class UI:
         self._current_view = None
 
     def _show_login_view(self):
-        """Näyttää sisäänkirjautumis-näkymän"""
+        """Näyttää sisäänkirjautumis-näkymän."""
 
         self._hide_current_view()
 
@@ -53,7 +50,7 @@ class UI:
         self._current_view.pack()
 
     def _show_sportstracker_view(self, state):
-        """Näyttää näkymän, jossa on liikuntasuoritukset"""
+        """Näyttää näkymän, jossa on liikuntasuoritukset."""
 
         self._hide_current_view()
 
@@ -62,7 +59,7 @@ class UI:
         self._current_view.pack()
 
     def _show_register_view(self):
-        """Näyttää rekisteröitymis-näkymän"""
+        """Näyttää rekisteröitymis-näkymän."""
 
         self._hide_current_view()
 
@@ -73,19 +70,19 @@ class UI:
         self._current_view.pack()
     
     def _show_new_activities_view(self, state):
-        """Näyttää näkymän, jossa voi lisätä uusia liikuntasuorituksia"""
+        """Näyttää näkymän, jossa voi lisätä uusia liikuntasuorituksia."""
 
         self._hide_current_view()
 
-        self._current_view = New_activities(self._root, self._show_sportstracker_view, state)
+        self._current_view = NewActivities(self._root, self._show_sportstracker_view, state)
 
         self._current_view.pack()
 
     def _show_edit_activities_view(self, state):
-        """Näyttää näkymän, jossa voi muokata omia liikuntasuorituksia"""
+        """Näyttää näkymän, jossa voi muokata omia liikuntasuorituksia."""
 
         self._hide_current_view()
 
-        self._current_view = Edit_activities(self._root, self._show_sportstracker_view, state)
+        self._current_view = EditActivities(self._root, self._show_sportstracker_view, state)
 
         self._current_view.pack()

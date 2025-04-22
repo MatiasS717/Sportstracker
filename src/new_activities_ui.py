@@ -1,14 +1,13 @@
 import tkinter
-from tkinter import Tk, ttk, constants, messagebox
+from tkinter import ttk, messagebox
 import users_commands
 import activities_commands
 
-class New_activities:
+class NewActivities:
     """Käyttäjän uusien liikuntasuoritusten lisäämiseen tarkoitettu näkymä."""
 
     def __init__(self, root, sportstracker, state):
         """Luokan konstruktori. Luo uuden lisäämisnäkymän.
-
             Args:
                 root:
                     TKinter-elementti, jonka sisään näkymä alustetaan.
@@ -21,7 +20,6 @@ class New_activities:
                 sportstracker:
                     Liikuntasuoritukset näyttävän näkymän funktio.
         """
-
         self._root = root
         self.white = "#FFFFFF"
         self.gray = "#333333"
@@ -48,9 +46,10 @@ class New_activities:
         self._frame.destroy()
 
     def add_activity(self):
-        """Lisää uuden liikuntasuorituksen tietokantaan"""
+        """Lisää uuden liikuntasuorituksen tietokantaan."""
 
-        result = users_commands.get_id(self._state["session_username"], self._state["session_password"])
+        result = users_commands.get_id(self._state["session_username"],
+        self._state["session_password"])
         user_id = result[0]
         activity = self.activity_entry.get()
         tracker = self.tracker_entry.get()
@@ -61,8 +60,10 @@ class New_activities:
             if activity in a:
                 y = 1
         if y == 0:
-            activities_commands.add_activity(activity, tracker, training_type, user_id)
-            messagebox.showinfo(title="Activity added", message="You successfully added an activity")
+            activities_commands.add_activity(activity, tracker,
+            training_type, user_id)
+            messagebox.showinfo(title="Activity added",
+            message="You successfully added an activity")
         else:
             self._show_error("Activity allready exists.")
 
@@ -75,7 +76,7 @@ class New_activities:
         """Rakentaa näkymän."""
 
         self._frame = tkinter.Frame(bg=self.gray)
-        
+
         activities_frame = tkinter.LabelFrame(self._frame, text="Activities")
         activities_frame.grid(row=0, column=0, padx=20, pady=20)
 
@@ -86,13 +87,17 @@ class New_activities:
         tracker_label = tkinter.Label(activities_frame, text="Tracker", font=("Arial", 16))
         tracker_spinbox = ttk.Spinbox(activities_frame, from_=0, to=1000)
         self.tracker_entry = tracker_spinbox
-        
-        training_type_label = tkinter.Label(activities_frame, text="Training type", font=("Arial", 16))
-        training_type_combobox = ttk.Combobox(activities_frame, values=["", "Endurance", "Strength", "Mobility", "Fitness"])
+
+        training_type_label = tkinter.Label(activities_frame,
+        text="Training type", font=("Arial", 16))
+        training_type_combobox = ttk.Combobox(activities_frame,
+        values=["", "Endurance", "Strength", "Mobility", "Fitness"])
         self.training_type_entry = training_type_combobox
 
-        add_activity_button = tkinter.Button(self._frame, text="Add activity", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.add_activity)
-        return_button = tkinter.Button(self._frame, text="Return to sportstracker", bg=self.pink, fg=self.white, font=("Arial", 16), command=self.return_command)
+        add_activity_button = tkinter.Button(self._frame, text="Add activity",
+        bg=self.pink, fg=self.white, font=("Arial", 16), command=self.add_activity)
+        return_button = tkinter.Button(self._frame, text="Return to sportstracker",
+        bg=self.pink, fg=self.white, font=("Arial", 16), command=self.return_command)
 
         activity_label.grid(row=0, column=0)
         activity_entry.grid(row=1, column=0, padx=10)

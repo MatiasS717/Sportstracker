@@ -11,7 +11,7 @@ def get_activities(user_id):
     return result
 
 def delete_activity(activity, tracker, training_type, user_id):
-    sql = """DELETE FROM activities WHERE 
+    sql = """DELETE FROM activities WHERE
              activity = ? AND
              tracker = ? AND
              training_type = ? AND
