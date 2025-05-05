@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import backend.users_commands
 import backend.activities_commands
 
@@ -71,24 +71,40 @@ class EditActivities:
         else:
             self._show_error("Activity allready deleted.")
 
+    def edit_activity(self, activity, tracker, training_type):
+        """Päivittää liikuntasuorituksen suorituskerrat."""
+
+        result = backend.users_commands.get_id(self._state["session_username"],
+        self._state["session_password"])
+        user_id = result[0]
+        if tracker == "":
+            self._show_error("Please insert a number to the entry.")
+        else:
+            backend.activities_commands.edit_activity(activity, tracker, training_type, user_id)
+            messagebox.showinfo(title="Tracker updated",
+                message="You successfully updated an activity tracker")
+
     def initialize_activity_item(self, activity):
         """Alustaa yksittäisen liikuntasuorituksen näkymään."""
 
         item_frame = tkinter.Frame(master=self._frame, bg=self.gray)
         list_activity_label = tkinter.Label(master=item_frame, text=activity[1], bg=self.gray,
         fg=self.white, font=("Arial", 14))
-        list_tracker_label = tkinter.Label(master=item_frame, text=activity[2], bg=self.gray,
-        fg=self.white, font=("Arial", 14))
+        list_tracker_spinbox = ttk.Spinbox(master=item_frame, from_=activity[2], to=1000)
         list_training_type_label = tkinter.Label(master=item_frame, text=activity[3], bg=self.gray,
         fg=self.white, font=("Arial", 14))
+        update_activity_button = tkinter.Button(master=item_frame, text="Update",
+        bg=self.pink, fg=self.white, font=("Arial", 14),
+        command=lambda: self.edit_activity(activity[1], list_tracker_spinbox.get(), activity[3]))
         delete_activity_button = tkinter.Button(master=item_frame, text="Delete",
         bg=self.pink, fg=self.white, font=("Arial", 14),
         command=lambda: self.delete_activity(activity[1], activity[2], activity[3]))
 
         list_activity_label.grid(row=0, column=0)
-        list_tracker_label.grid(row=0, column=1, padx=20)
+        list_tracker_spinbox.grid(row=0, column=1)
         list_training_type_label.grid(row=0, column=2)
-        delete_activity_button.grid(row=0, column=3, pady=10)
+        update_activity_button.grid(row=0, column=3, pady=10)
+        delete_activity_button.grid(row=0, column=4, pady=10)
 
         item_frame.pack()
 

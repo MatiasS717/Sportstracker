@@ -18,6 +18,14 @@ def delete_activity(activity, tracker, training_type, user_id):
              user_id = ?"""
     backend.db.execute(sql, [activity, tracker, training_type, user_id])
 
+def edit_activity(activity, tracker, training_type, user_id):
+    sql = """UPDATE activities SET tracker = ?
+             WHERE
+             activity = ? AND
+             training_type = ? AND
+             user_id = ?"""
+    backend.db.execute(sql, [tracker, activity, training_type, user_id])
+
 def create_table_activities():
     sql = """CREATE TABLE activities (
              id INTEGER PRIMARY KEY,
