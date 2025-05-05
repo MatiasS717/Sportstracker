@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import ttk, messagebox
-import users_commands
-import activities_commands
+import backend.users_commands
+import backend.activities_commands
 
 class NewActivities:
     """Käyttäjän uusien liikuntasuoritusten lisäämiseen tarkoitettu näkymä."""
@@ -48,19 +48,19 @@ class NewActivities:
     def add_activity(self):
         """Lisää uuden liikuntasuorituksen tietokantaan."""
 
-        result = users_commands.get_id(self._state["session_username"],
+        result = backend.users_commands.get_id(self._state["session_username"],
         self._state["session_password"])
         user_id = result[0]
         activity = self.activity_entry.get()
         tracker = self.tracker_entry.get()
         training_type = self.training_type_entry.get()
-        activities = activities_commands.get_activities(user_id)
+        activities = backend.activities_commands.get_activities(user_id)
         y = 0
         for a in activities:
             if activity in a:
                 y = 1
         if y == 0:
-            activities_commands.add_activity(activity, tracker,
+            backend.activities_commands.add_activity(activity, tracker,
             training_type, user_id)
             messagebox.showinfo(title="Activity added",
             message="You successfully added an activity")

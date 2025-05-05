@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import Tk, ttk, constants, messagebox
 import sqlite3
-import users_commands
+import backend.users_commands
 
 class Register:
     """Rekisteröitymiseen tarkoitettu näkymä."""
@@ -51,7 +51,7 @@ class Register:
             username = self.register_username_entry.get()
             password = self.register_password_entry.get()
             try:
-                users_commands.register(username, password)
+                backend.users_commands.register(username, password)
                 messagebox.showinfo(title="Register Success", message="You successfully registered")
                 self.login()
             except sqlite3.IntegrityError:

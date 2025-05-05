@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import Tk, ttk, constants, messagebox
-import users_commands
-import activities_commands
+import backend.users_commands
+import backend.activities_commands
 
 class Sportstracker:
     """Käyttäjän liikuntasuorituksien näkemiseen tarkoitettu näkymä."""
@@ -31,7 +31,7 @@ class Sportstracker:
         self._state = state
         self._frame = None
         self.new_activities = new_activities
-        self.edit_activities =edit_activities
+        self.edit_activities = edit_activities
 
         self.sportstracker_start()
 
@@ -77,9 +77,9 @@ class Sportstracker:
         username_label = tkinter.Label(self._frame, text=self._state["session_username"], bg=self.gray, fg=self.white, font=("Arial", 16))
         username_label.grid(row=1, column=1)
 
-        result = users_commands.get_id(self._state["session_username"], self._state["session_password"])
+        result = backend.users_commands.get_id(self._state["session_username"], self._state["session_password"])
         user_id = result[0]
-        activities = activities_commands.get_activities(user_id)
+        activities = backend.activities_commands.get_activities(user_id)
         x = 4
 
         for activity in activities:

@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import messagebox
-import users_commands
-import activities_commands
+import backend.users_commands
+import backend.activities_commands
 
 class EditActivities:
     """Käyttäjän liikuntasuorituksien muokkaamiseen tarkoitettu näkymä."""
@@ -53,16 +53,16 @@ class EditActivities:
     def delete_activity(self, activity, tracker, training_type):
         """Poistaa liikuntasuorituksen tietokannasta ja päivittää näkymän."""
 
-        result = users_commands.get_id(self._state["session_username"],
+        result = backend.users_commands.get_id(self._state["session_username"],
         self._state["session_password"])
         user_id = result[0]
         y = 0
-        activities = activities_commands.get_activities(user_id)
+        activities = backend.activities_commands.get_activities(user_id)
         for a in activities:
             if activity in a:
                 y = 1
         if y == 1:
-            activities_commands.delete_activity(activity, tracker, training_type, user_id)
+            backend.activities_commands.delete_activity(activity, tracker, training_type, user_id)
             messagebox.showinfo(title="Activity deleted",
             message="You successfully deleted an activity")
             self.destroy()
@@ -95,10 +95,10 @@ class EditActivities:
     def initialize_activity_list(self):
         """Alustaa listan liikuntasuorituksista näkymään."""
 
-        result = users_commands.get_id(self._state["session_username"],
+        result = backend.users_commands.get_id(self._state["session_username"],
         self._state["session_password"])
         user_id = result[0]
-        activities = activities_commands.get_activities(user_id)
+        activities = backend.activities_commands.get_activities(user_id)
 
         for activity in activities:
             self.initialize_activity_item(activity)

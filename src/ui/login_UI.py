@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import Tk, ttk, constants, messagebox
 import sqlite3
-import users_commands
+import backend.users_commands
 
 class Login:
     """Sisäänkirjautumiseen tarkoitettu näkymä."""
@@ -58,7 +58,7 @@ class Login:
         self._state["session_username"] = session_username
         self._state["session_password"] = session_password
 
-        result = users_commands.login(session_username, session_password)
+        result = backend.users_commands.login(session_username, session_password)
         if result == None:
             self._show_error("Invalid login.")
             return

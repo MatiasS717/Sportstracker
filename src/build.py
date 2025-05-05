@@ -1,5 +1,5 @@
-import users_commands
-import activities_commands
+import backend.users_commands
+import backend.activities_commands
 
 def initialize_database():
     users_commands.drop_table_users()

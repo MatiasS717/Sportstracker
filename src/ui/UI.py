@@ -1,15 +1,8 @@
-from login_UI import Login
-from register_UI import Register
-from sportstracker_UI import Sportstracker
-from new_activities_ui import NewActivities
-from edit_activities_ui import EditActivities
-
-# ui
-# - view
-# - logic
-# backend
-# - db
-# - logic
+from ui.login_UI import Login
+from ui.register_UI import Register
+from ui.sportstracker_UI import Sportstracker
+from ui.new_activities_ui import NewActivities
+from ui.edit_activities_ui import EditActivities
 
 class UI:
     """Sovelluksen käyttöliittymästä vastaava luokka."""
