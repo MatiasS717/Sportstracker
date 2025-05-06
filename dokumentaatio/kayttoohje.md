@@ -52,9 +52,11 @@ Siirryttyäsi NewActivities näkymään Sportstracker näkymästä painamalla "N
 
 Pääset takaisin tarkastelemaan liikuntasuorituksiasi painamalla "Return to sportstracker"-nappia.
 
-## Liikuntasuorituksen poistaminen
+## Liikuntasuoritusten poistaminen ja liikuntakertojen muuttaminen
 
-Siirryttyäsi EditActivities näkymään Sportstracker näkymästä painamalla "Edit activities"-nappia, pysty poistamaan liikuntasuorituksia painamalla kyseisen suorituksen kohdalta "Delete"-nappia.
+Siirryttyäsi EditActivities näkymään Sportstracker näkymästä painamalla "Edit activities"-nappia, pystyt poistamaan liikuntasuorituksia painamalla kyseisen suorituksen kohdalta "Delete"-nappia.
+
+Samassa näkymässä voit päivittää liikuntakertojen määrää täyttämällä oikean numeron annettuun kenttään ja painamalla "Update"-nappia.
 
 ![](Kuvat/EditActivities.png)
 
