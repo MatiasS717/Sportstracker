@@ -4,10 +4,11 @@
 
 Sovelluksen avulla käyttäjien on mahdollista pitää kirjaa tekemistään liikuntasuorituksista. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen liikuntasuorituslistansa.
 
-## Suunnitellut toiminnallisuudet
+## Sovelluksen toiminnallisuudet
 
 - Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
-- Käyttäjä pystyy lisäämään sovellukseen liikuntasuorituksia. Lisäksi käyttäjä pystyy muokkaamaan ja poistamaan lisäämiään liikuntasuorituksia.
+- Käyttäjä pystyy lisäämään sovellukseen liikuntasuorituksia. 
+- Käyttäjä pystyy päivittämään liikuntasuoritusten suorituskertoja ja poistamaan lisäämiään liikuntasuorituksia.
 - Käyttäjä näkee sovellukseen lisätyt liikuntasuoritukset.
 
 ### Jatkokehitysideoita
