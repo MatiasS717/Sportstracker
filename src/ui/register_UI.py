@@ -47,17 +47,21 @@ class Register:
     def register_command(self):
         """Luo uuden käyttäjän tietokantaan."""
 
-        if self.register_password_entry.get()==self.register_repeat_password_entry.get():
-            username = self.register_username_entry.get()
-            password = self.register_password_entry.get()
+        username = self.register_username_entry.get()
+        password1 = self.register_password_entry.get()
+        password2 = self.register_repeat_password_entry.get()
+
+        if username == "" or password1 == "" or password2 == "":
+            self._show_error("Please fill all the entries.")
+        elif password1 != password2:
+            self._show_error("Passwords do not match.")
+        else:    
             try:
-                backend.users_commands.register(username, password)
+                backend.users_commands.register(username, password1)
                 messagebox.showinfo(title="Register Success", message="You successfully registered")
                 self.login()
             except sqlite3.IntegrityError:
                 self._show_error("Username allready taken")
-        else:
-            self._show_error("Passwords do not match")
 
     def register_start(self):
         """Rakentaa näkymän."""
