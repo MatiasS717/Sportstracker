@@ -5,7 +5,7 @@ from ui.UI import UI
 def main():
     window = Tk()
     window.title("Sportstracker")
-    window.geometry('440x340')
+    window.geometry('640x340')
     window.configure(bg='#333333')
 
     ui_view = UI(window)
