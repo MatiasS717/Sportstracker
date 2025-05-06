@@ -3,6 +3,8 @@ from ui.UI import UI
 
 
 def main():
+    """Asettaa ikkunan asetukset ja käynnistää UI:n alustaman ikkunan."""
+
     window = Tk()
     window.title("Sportstracker")
     window.geometry('640x340')
