@@ -53,6 +53,8 @@ activities-commands tiedoston käskyjä ovat esimerkiksi:
 
 `add-activity(activity, tracker, training-type, user-id)`
 
+`edit-activity(activity, tracker, training-type, user-id)`
+
 `delete-activity(activity, tracker, training-type, user-id)`
 
 ## Tietojen tallennus tietokantaan
@@ -120,6 +122,25 @@ sequenceDiagram
 ```
 
 Käyttöliittymän metodi kutsuu activities-commands tiedoston funktiota get-activities, minkä jälkeen tarkastetaan onko kyseisellä käyttäjällä olemassa jo kyseinen liikuntasuoritus. Jos ei ole, kutsutaan funktiota add_activity, mikä lisää liikuntasuorituksen tietokantaan. Lopuksi käyttöliittymä kertoo viestillä onnistuneesti lisätystä liikuntasuorituksesta.
+
+### Liikuntakertojen päivittäminen
+
+Alla oleva kaavio kuvastaa liikuntakertojen päivittämisen prosessia:
+
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI
+  participant activities_commands
+  participant database
+  User->>UI: click "Update" button
+  UI->UI: list_tracker_spinbox.get()
+  UI->>activities_commands: if tracker not == "":edit_activity("Running", 7, "Endurance", user_id)
+  activities_commands->>database: edit_activity("Running, 7, "Endurance", user_id)
+  UI->UI:message:"You successfully updated an activity tracker"
+```
+
+Käyttöliittymä tarkastaa onko syötekenttä tyhjä. Käyttöliittymän metodi kutsuu activities-commands tiedoston funktiota edit_activity antaen parametreiksi muokattavan liikuntasuorituksen tiedot. Komento muokkaa tracker-kohdan lukua tietokannassa. Tämän jälkeen UI lähettää viestii onnistuneesta päivityksestä. Jos tracker-kohdan syötekenttä on tyhjä painaessa "Update" nappia, UI lähettää viestin "Please insert a number to the entry.". 
 
 ### Liikuntasuorituksen poistaminen
 
