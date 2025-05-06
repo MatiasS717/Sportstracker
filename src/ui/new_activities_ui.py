@@ -45,15 +45,12 @@ class NewActivities:
 
         self._frame.destroy()
 
-    def add_activity(self):
+    def add_activity(self, activity, tracker, training_type):
         """Lisää uuden liikuntasuorituksen tietokantaan."""
 
         result = backend.users_commands.get_id(self._state["session_username"],
         self._state["session_password"])
         user_id = result[0]
-        activity = self.activity_entry.get()
-        tracker = self.tracker_entry.get()
-        training_type = self.training_type_entry.get()
         activities = backend.activities_commands.get_activities(user_id)
         y = 0
         for a in activities:
@@ -82,20 +79,19 @@ class NewActivities:
 
         activity_label = tkinter.Label(activities_frame, text="Activity", font=("Arial", 16))
         activity_entry = ttk.Entry(activities_frame)
-        self.activity_entry = activity_entry
 
         tracker_label = tkinter.Label(activities_frame, text="Tracker", font=("Arial", 16))
         tracker_spinbox = ttk.Spinbox(activities_frame, from_=0, to=1000)
-        self.tracker_entry = tracker_spinbox
 
         training_type_label = tkinter.Label(activities_frame,
         text="Training type", font=("Arial", 16))
         training_type_combobox = ttk.Combobox(activities_frame,
         values=["", "Endurance", "Strength", "Mobility", "Fitness"])
-        self.training_type_entry = training_type_combobox
 
         add_activity_button = tkinter.Button(self._frame, text="Add activity",
-        bg=self.pink, fg=self.white, font=("Arial", 16), command=self.add_activity)
+        bg=self.pink, fg=self.white, font=("Arial", 16),
+        command=lambda: self.add_activity(activity_entry.get(), tracker_spinbox.get(),
+        training_type_combobox.get()))
         return_button = tkinter.Button(self._frame, text="Return to sportstracker",
         bg=self.pink, fg=self.white, font=("Arial", 16), command=self.return_command)
 
