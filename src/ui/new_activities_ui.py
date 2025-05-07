@@ -55,7 +55,7 @@ class NewActivities:
         y = 0
         if activity == "" or tracker == "" or training_type == "":
             self._show_error("Please fill out all the entries.")
-        else:    
+        else:
             for a in activities:
                 if activity in a:
                     y = 1
