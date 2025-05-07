@@ -53,16 +53,19 @@ class NewActivities:
         user_id = result[0]
         activities = backend.activities_commands.get_activities(user_id)
         y = 0
-        for a in activities:
-            if activity in a:
-                y = 1
-        if y == 0:
-            backend.activities_commands.add_activity(activity, tracker,
-            training_type, user_id)
-            messagebox.showinfo(title="Activity added",
-            message="You successfully added an activity")
-        else:
-            self._show_error("Activity allready exists.")
+        if activity == "" or tracker == "" or training_type == "":
+            self._show_error("Please fill out all the entries.")
+        else:    
+            for a in activities:
+                if activity in a:
+                    y = 1
+            if y == 0:
+                backend.activities_commands.add_activity(activity, tracker,
+                training_type, user_id)
+                messagebox.showinfo(title="Activity added",
+                message="You successfully added an activity")
+            else:
+                self._show_error("Activity allready exists.")
 
     def return_command(self):
         """Vie käyttäjän takaisin liikuntasuoritukset-näkymään."""
