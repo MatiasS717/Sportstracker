@@ -1,5 +1,6 @@
 import unittest
 import backend.activities_commands
+import build
 
 class TestIndex(unittest.TestCase):
 
@@ -9,6 +10,7 @@ class TestIndex(unittest.TestCase):
         self.tracker = 2
         self.training_type = "Endurance"
         self.user_id = 1
+        build.initialize_database()
         backend.activities_commands.add_activity(self.activity, self.tracker, self.training_type, self.user_id)
     
     def test_edit_activity(self):
@@ -19,7 +21,7 @@ class TestIndex(unittest.TestCase):
 
     def test_get_activities(self):
         result = backend.activities_commands.get_activities(self.user_id)
-        self.assertEqual((self.id, self.activity, 7, self.training_type, self.user_id), result[0])
+        self.assertEqual((self.id, self.activity, self.tracker, self.training_type, self.user_id), result[0])
 
     def test_delete_activity(self):
         backend.activities_commands.delete_activity(self.activity, self.tracker, self.training_type, self.user_id)

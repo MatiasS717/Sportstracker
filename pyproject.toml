@@ -9,7 +9,8 @@ readme = "README.md"
 requires-python = "^3.10"
 dependencies = [
     "invoke (>=2.2.0,<3.0.0)",
-    "cowsay (>=6.1,<7.0)"
+    "cowsay (>=6.1,<7.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)"
 ]
 
 
@@ -21,4 +22,5 @@ build-backend = "poetry.core.masonry.api"
 coverage = "^7.8.0"
 pytest = "^8.3.5"
 pylint = "^3.3.6"
+pytest-dotenv = "^0.5.2"
 

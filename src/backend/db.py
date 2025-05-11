@@ -1,9 +1,10 @@
 import sqlite3
+from config import DATABASE_FILENAME
 
 def get_connection():
-    """Luo yhteyden tiedostoon database.db."""
+    """Luo yhteyden tietokantaan."""
 
-    con = sqlite3.connect("database.db")
+    con = sqlite3.connect(DATABASE_FILENAME)
     return con
 
 def execute(sql, params=[]):
