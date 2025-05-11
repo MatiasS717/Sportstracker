@@ -59,7 +59,7 @@ activities-commands tiedoston käskyjä ovat esimerkiksi:
 
 ## Tietojen tallennus tietokantaan
 
-Backend hoitaa tietojen tallennuksen SQLite-tietokantaan luomalla tietokannan ja taulut tietokantaan build.py tiedostossa. db.py hoitaa yhteyden luonnin tietokantaan ja activities-commands, sekä users-commands tiedostot toteuttavat SQL-komennot. Käyttäjät tallennetaan database.db tiedoston tauluun `users` ja liikuntasuoritukset tauluun `activities`.
+Backend hoitaa tietojen tallennuksen SQLite-tietokantaan luomalla tietokannan ja taulut tietokantaan build.py tiedostossa. db.py hoitaa yhteyden luonnin tietokantaan ja activities-commands, sekä users-commands tiedostot toteuttavat SQL-komennot. Käyttäjät tallennetaan database.db tiedoston tauluun `users` ja liikuntasuoritukset tauluun `activities`. Tietokannan nimeä voi halutessaan muuttaa .env tiedostossa, joku määrittää tietokannan nimen.
 
 ## Päätoiminnot
 

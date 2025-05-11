@@ -13,6 +13,7 @@
 - [Changelog](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 - [Arkkitehtuuri](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 - [Käyttöohje](https://github.com/MatiasS717/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
+- [Testausdokumentti](https://github.com/MatiasS717/Sportstracker/blob/main/dokumentaatio/testaus.md)
 
 ## Asennus
 1. Pystyt asentamaan riippuvuudet komennolla:

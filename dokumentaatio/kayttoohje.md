@@ -2,6 +2,10 @@
 
 Lataa projektin viimeisin [release](https://github.com/MatiasS717/ot-harjoitustyo/releases/tag/Viikko6).
 
+## Konfigurointi
+
+Käytettävän tietokannan nimeä voi muuttaa halutessaan .env-tiedostossa. Alustavasti tietokannan nimi on database.db.
+
 ## Ohjelman käynnistäminen
 
 Asenna riippuvuudet komennolla:
