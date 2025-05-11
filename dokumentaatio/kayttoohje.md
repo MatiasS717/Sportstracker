@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin viimeisin [release](https://github.com/MatiasS717/ot-harjoitustyo/releases/tag/Viikko6).
+Lataa projektin viimeisin [release](https://github.com/MatiasS717/Sportstracker/releases/tag/loppupalautus).
 
 ## Konfigurointi
 
