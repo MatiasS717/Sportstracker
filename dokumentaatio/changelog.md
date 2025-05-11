@@ -28,3 +28,16 @@
 - Laadittu alustava käyttöohje.
 - Lisätty testausta.
 - Korjattu koodia Pylintin ohjeiden mukaisesti.
+
+## Viikko 7
+
+- Käyttäjä voi päivittää liikuntakertojen määrää EditActivities näkymässä.
+- Päivitetty sovelluksen konfiguraatio python-dotenv-kirjaston avulla.
+- Päivitetty testaus käyttämään omaa testitietokantaa.
+- Korjattu sovelluksessa olleita virhesyötemahdollisuuksia.
+- Korjattiin sovelluksen ikkunan koko sopivammaksi.
+- Jaettiin tiedostot ui ja backend hakemistoihin.
+- Viimeistelty koodin docstring-dokumentointi.
+- Korjattu koodia Pylintin ohjeiden mukaisesti.
+- Päivitetty arkkitehtuurikuvaus, kayttöohje, sekä vaatimusmäärittely.
+- Luotu testausdokumentti.
